@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html class='no-js' lang='en'>
+<head>
+<title>Fulcrum | Disaster Relief Australia</title>
+<meta charset='utf-8'>
+<meta content='Fulcrum uses intelligent automation to digitally transform safety and quality programs — maximizing field team performance and agility, connecting the field with the back office, and improving process rigor and compliance.' name='description'>
+<meta content='mobile data collection, form builder, data collection forms, geospatial data collection, iPhone data collection, android data collection, gis collection forms, mobile location leverage' name='keywords'>
+<meta content='Copyright Spatial Networks, Inc. - 2016 All Rights Reserved.' name='copyright'>
+<meta content='Spatial Networks, Inc.' name='author'>
+<meta content='support@fulcrumapp.com' name='email'>
+<meta content='Global' name='Distribution'>
+<meta content='Fulcrum - Mobile Location Leverage' name='title'>
+<meta content='Spatial Networks, Inc.' name='creator'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+
+<link href="https://webassets.fulcrumapp.com/assets-e2d7253201/bootstrap.css" rel="stylesheet" type="text/css"></link>
+<link href="https://webassets.fulcrumapp.com/assets-e2d7253201/application.css" rel="stylesheet" type="text/css"></link>
+
+<link href='https://webassets.fulcrumapp.com/assets-e2d7253201/images/favicon.ico' rel='shortcut icon'>
+<link href='https://webassets.fulcrumapp.com/assets-e2d7253201/images/apple-touch-icon.png' rel='apple-touch-icon-precomposed'>
+
+</head>
+<body class='photos view '>
+<link href='https://webassets.fulcrumapp.com/assets-e2d7253201/fulcrum-components-bundle.css' rel='stylesheet' type='text/css'>
+
+<div class='global-content'>
+<div class='top-bar'>
+<div class='header-wrapper'>
+<div class='header-title-container'>
+<h3>Photos</h3>
+</div>
+
+</div>
+</div>
+</div>
+<div class='page-content clearfix'>
+<div class='content-wrap' id="photoContainer">
+
+<script>
+	function displayPhotos() {
+		// Get the current URL
+		const urlParams = new URLSearchParams(window.location.search);
+		
+		// Check if 'photos' parameter exists
+		if(urlParams.has('photos')) {
+			// Get the 'images' parameter, decode it, and split it into an array of URLs
+			const photoUrls = decodeURIComponent(urlParams.get('photos')).split(',');
+			
+			// Get the image container div
+			const container = document.getElementById('photoContainer');
+			
+			// Loop through each URL
+			photoUrls.forEach((photoUrl) => {
+                // Remove quotes from the photoUrl if encapsulated
+                const cleanPhotoUrl = photoUrl.replace(/^"(.+)"$/, '$1').replace(/^'(.+)'$/, '$1');
+                
+                // Create a new URL object
+                const url = new URL(cleanPhotoUrl);
+                let queryString = url.search;
+                if(queryString.includes('signature')) {
+                    // Directly replace '+' and '=' with their encoded forms '%2B' and '%3D' respectively in the signature parameter
+                    queryString = queryString.replace(/signature=([^&]+)/, function(match, p1) {
+                        return 'signature=' + p1.replace(/\+/g, '%2B').replace(/\=/g, '%3D');
+                    });
+                    // Update the URL's search part
+                    url.search = queryString;
+                };
+                
+                // Construct the final URL with encoded signature
+                const finalPhotoUrl = url.href;
+                
+                // Create a div element for the photo
+                const photoDiv = document.createElement('div');
+                photoDiv.className = 'photo';
+                
+                // Create a photo element
+                const img = document.createElement('img');
+                
+                // Set the source of the photo
+                img.src = finalPhotoUrl;
+				
+				// Set alt text for accessibility
+				img.alt = 'Photo';
+				
+				// Append the image to the photo div
+				photoDiv.appendChild(img);
+				
+				// Append the photo div to the container
+				container.appendChild(photoDiv);
+			});
+		} else {
+			// If no 'photos' parameter, display a message
+			document.getElementById('photoContainer').innerText = 'No photos provided.';
+		}
+	}
+
+	// Call the function when the script loads
+	displayPhotos();
+</script>
+
+</div>
+</div>
+</body>
+</html>
