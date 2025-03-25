@@ -10,6 +10,12 @@ Parameter value must be URL Encoded to properly transform its special characters
 Example usage:
 https://dra-fulcrum.github.io/utils/photos-view.html?photos=https%3A%2F%2Fweb.fulcrumapp.com%2Fapi%2Fv2%2Ffile%3Fcontext%3D5e4849e5-ce90-4c7c-af04-294fde06df69%26id%3Df5c3ab51-a5af-489b-b48d-12b5965a5552%26type%3Dphoto%26expires%3D1707802868%26signature%3Dxyzzy%253D%2Chttps%3A%2F%2Fweb.fulcrumapp.com%2Fapi%2Fv2%2Ffile%3Fcontext%3D5e4849e5-ce90-4c7c-af04-294fde06df69%26id%3D954bd38a-0130-430f-9e14-ace841c660fc%26type%3Dphoto%26expires%3D1707802868%26signature%3Dxyzzy%253D
 
+data-viewer.html
+----------------
+Web page to display Fulcrum data.
+Example usage: 
+https://dra-fulcrum.github.io/utils/data-viewer.html??id=7f650ec6539720f3163d&view=table
+
 darBImin.html
 -------------
 DRA Business Intelligence from Fulcrum.
