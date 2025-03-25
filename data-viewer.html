@@ -283,6 +283,7 @@
           script.src = url;
           script.async = false; // Load synchronously to block later scripts
           document.head.insertBefore(script, document.head.firstChild);
+		  window.location.reload();
         });
       })();
     </script>
