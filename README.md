@@ -14,7 +14,7 @@ data-viewer.html
 ----------------
 Web page to display Fulcrum data.
 Example usage: 
-https://dra-fulcrum.github.io/utils/data-viewer.html??id=7f650ec6539720f3163d&view=table
+https://dra-fulcrum.github.io/utils/data-viewer.html?id=7f650ec6539720f3163d&view=table
 
 darBImin.html
 -------------
